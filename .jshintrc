@@ -1,0 +1,26 @@
+{
+	"asi": false,
+	"camelcase": true,
+	"eqeqeq": true,
+	"freeze": true,
+	"globals": {
+		"emit": false,
+		"resetDatabases": false,
+		"testApp": false
+	},
+	"globalstrict": false,
+	"immed": true,
+	"latedef": true,
+	"maxcomplexity": 10,
+	"maxdepth": 5,
+	"maxparams": 5,
+	"mocha": true,
+	"noarg": true,
+	"node": true,
+	"nonew": true,
+	"quotmark": "double",
+	"strict": true,
+	"undef": true,
+	"unused": true,
+	"validthis": true
+}

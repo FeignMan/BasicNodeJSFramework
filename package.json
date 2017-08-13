@@ -1,0 +1,24 @@
+{
+  "name": "basic-node-framework",
+  "version": "0.0.0",
+  "description": "a simple node app skeleton to demo nodejs",
+  "main": "app.js",
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "mocha": "^3.5.0"
+  },
+  "scripts": {
+    "start": "node . | bunyan -o short",
+    "lint": "jshint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FeignMan/BasicNodeJSFramework.git"
+  },
+  "author": "Ishan Aditya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FeignMan/BasicNodeJSFramework/issues"
+  },
+  "homepage": "https://github.com/FeignMan/BasicNodeJSFramework#readme"
+}
