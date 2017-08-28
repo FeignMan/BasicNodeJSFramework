@@ -74,8 +74,32 @@ Think of NPM scripts as a way to declare simple shell commands mapped to an alia
 It is possible to use NPM scripts as a decent build tool for simple operations.
 Perfect for:
 - a start command to start the app and pipe the output to bunyan:
+```
 	"start": "node . | bunyan -o short"
+```
 - a 'test-mocha' command to run the test suite:
+```
 	"test-mocha": "mocha --colors --reporter spec --check-leaks | bunyan -o short"
-- a 'test' command to chain the test suite with jshint:
+```
+- npm scripts can be chained further:
+```
 	"test": "npm run test-mocha && jshint ."
+```
+
+##### Application entry-point:
+
+Let's assume the entry point to your application is _app.js_. To your package.json, add the attribute "main" with the value "app.js". Make sure the file exists in the root folder of your application.
+
+##### Testing 1, 2, 3...
+
+Copy the following lines into _app.js_:
+
+```
+var bunyan = require("bunyan");
+var log = bunyan.createLogger({name: "TestApp"});
+
+log.info("App Started");
+log.info("App Terminated");
+```
+
+If everything was set up right, the _npm start_ command should launch the application and you should see two log lines.
