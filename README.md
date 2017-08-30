@@ -1,7 +1,7 @@
 # Greetings Padawan!
 
 Welcome to Node.js. This is a basic application meant for demo-ing node development, with each commit adding bite-sized functionality, to the benefit of beginners.
-With each commit, the README will be updated to cover whatever was added or modified.
+With each commit, the README will be updated to cover whatever was added or modified. At some point later, I might tag certain commits to mark each stage of a future tutorial. 
 
 Steps to create this skeleton are outlined below.
 
@@ -38,6 +38,7 @@ An alias for a version can also be used like so:
 ```
     nvm use <version/alias>
 ```
+Start messing around with the Node REPL already!
 
 #### Node-specific .gitignore:
 	wget https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -O .gitignore

@@ -15,6 +15,7 @@
 	"maxdepth": 5,
 	"maxparams": 5,
 	"mocha": true,
+	"multistr": true,
 	"noarg": true,
 	"node": true,
 	"nonew": true,
