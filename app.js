@@ -6,28 +6,35 @@ var log = bunyan.createLogger({name: "TestApp"});
 
 log.info("App Started");
 
-var htmlStart = "<!DOCTYPE html><html><body>";
 var videoiFrame = "<p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/t0pwKzTRG5E\" frameborder=\"0\" allowfullscreen></iframe></p>";
-var htmlEnd = "</body></html>";
 
 //	Before we create a HTTP server, let's create a request handler.
 //	The request handler is called once for every HTTP request made against the server.
-var requestListener = function (req, res) {
-	log.info(req.method, "request received from:", req.connection.remoteAddress);
-	// console.log(req);
+var requestHandler = function (request, response) {
+	log.info(request.method, "request received from:", request.connection.remoteAddress, "URL Requested:", request.url);
+	// console.log(request.headers);
 
-	res.writeHead(200);
-	var respStr = htmlStart;
-	respStr += "<b>Hello World!<b>";
-	respStr += videoiFrame;
-	respStr += htmlEnd;
+	//	Write response status code, and response headers
+	//	If not specified, status code defaults to 200. Can be specified, eg. response.statusCode = 404
+	//	Headers can be set individually, eg. response.setHeader("Content-Type", "text/html")
+	response.writeHead(200, {
+		"Content-Type": "text/html",
+		"X-Powered-By": "chuck-norris"
+	});
 
-	res.end(respStr);
+	response.write("<!DOCTYPE html><html>");
+	response.write("<title>NodeSchool-Ubi</title>");
+	response.write("<body>");
+	response.write("<b>Hello World!</b>");
+	response.write(videoiFrame);
+	response.write("</body></html>");
+
+	response.end();
 };
 
 //	http.createServer() returns a http.Server object, which is an implementation of
-//	Node.js's EventEmitter type. The requestListener is the handler for the 'request' event.
-var server = http.createServer(requestListener);
+//	Node.js's EventEmitter type. The requestHandler is the callback for the 'request' event.
+var server = http.createServer(requestHandler);
 //	which is a short-hand for...
 //	var server = http.createServer();
 //	server.on("request", requestHandler);
