@@ -18,7 +18,7 @@ var requestHandler = function (request, response) {
 	//	If not specified, status code defaults to 200. Can be specified, eg. response.statusCode = 404
 	//	Headers can be set individually, eg. response.setHeader("Content-Type", "text/html")
 	response.writeHead(200, {
-		"Content-Type": "text/html",
+		"Content-Type": "text/html; charset=utf-8",
 		"X-Powered-By": "chuck-norris"
 	});
 
