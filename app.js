@@ -4,7 +4,7 @@ var http = require("http");
 var bunyan = require("bunyan");
 var log = bunyan.createLogger({name: "TestApp"});
 
-log.info("App Started");
+log.info("App Started; PID:", process.PID);
 
 var videoiFrame = "<p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/t0pwKzTRG5E\" frameborder=\"0\" allowfullscreen></iframe></p>";
 
@@ -35,10 +35,25 @@ var requestHandler = function (request, response) {
 //	http.createServer() returns a http.Server object, which is an implementation of
 //	Node.js's EventEmitter type. The requestHandler is the callback for the 'request' event.
 var server = http.createServer(requestHandler);
-//	which is a short-hand for...
-//	var server = http.createServer();
-//	server.on("request", requestHandler);
+//	which is a short-hand for:
+//		var server = http.createServer();
+//		server.on("request", requestHandler);
 
-server.listen(3000);
+server.on("error", function(err) {
+	//	Errors like EADDRINUSE will be caught here
+	//	Any errors emitted from the requestHandler will land here too
+	log.error("Ooo la la! Putain merde!\n", err);
+	server.close(function() {
+		log.info("Shutting down...");
+		process.exit(1);
+	});
+})
 
-log.info("Server listening on port 80");
+server.listen(3000, function(err) {
+	if (err) {
+		log.error(err);
+		process.exit(1);
+	}
+
+	log.info("Server listening on port 80");
+});
