@@ -15,7 +15,7 @@ Steps to create this skeleton are outlined below.
 ```
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 ```
-For windows, try [nvm-windows](https://github.com/coreybutler/nvm-windows).
+For windows, try [nvm-windows](https://github.com/coreybutler/nvm-windows). Installers can be found [here](https://github.com/coreybutler/nvm-windows/releases).
 - Listing available node versions:
 ```
     nvm ls-remote
